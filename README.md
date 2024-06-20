@@ -1,5 +1,6 @@
 ## 一、前言
 本模块灵感来源于magicgui，感谢作者
+
 本模块与magicgui的区别：
 - 本模块主要基于tkinter，以及python标准库中的typing、ctypes。不需要安装pyside等其他第三方依赖。
 - 本模块本着简易使用的原则，只有一个装饰器函数，没有其他参数设置
@@ -13,7 +14,9 @@
 - 4、tkinter进行了DPI的适配，界面不会显示模糊
 
 ## 三、使用方法
+```python
 pip install defgui
+```
 
 直接在函数上加上装饰器就可以使用
 ### 注意：
@@ -27,7 +30,7 @@ from typing import List
 @defgui
 def example_function(a: int, b: float,c: str,d: List[str])-> tuple:
 	"""Example function that returns a tuple of four values."""
-	return a + 1, b + 1,"返回字符串：%s"%(c),d
+	return a + 1, b + 1,"str：%s"%(c),d
 
 # 运行函数
 example_function()
