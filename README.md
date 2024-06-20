@@ -14,7 +14,9 @@
 - 4、tkinter进行了DPI的适配，界面不会显示模糊
 
 ## 三、使用方法
+```python
 pip install defgui
+```
 
 直接在函数上加上装饰器就可以使用
 ### 注意：
@@ -28,7 +30,7 @@ from typing import List
 @defgui
 def example_function(a: int, b: float,c: str,d: List[str])-> tuple:
 	"""Example function that returns a tuple of four values."""
-	return a + 1, b + 1,"返回字符串：%s"%(c),d
+	return a + 1, b + 1,"str：%s"%(c),d
 
 # 运行函数
 example_function()
