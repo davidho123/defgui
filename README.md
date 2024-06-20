@@ -1,5 +1,6 @@
 ## 一、前言
 本模块灵感来源于magicgui，感谢作者
+
 本模块与magicgui的区别：
 - 本模块主要基于tkinter，以及python标准库中的typing、ctypes。不需要安装pyside等其他第三方依赖。
 - 本模块本着简易使用的原则，只有一个装饰器函数，没有其他参数设置
