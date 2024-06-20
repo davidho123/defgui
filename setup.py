@@ -15,6 +15,7 @@ setup(
     author="davidho",
     author_email="",
     url="https://github.com/davidho123/defgui",
+    license="MIT",
     description=DESCRIPTION,
     long_description_content_type="text/markdown",
     long_description=long_description,
