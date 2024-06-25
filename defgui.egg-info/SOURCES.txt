@@ -2,7 +2,8 @@ LICENSE
 README.md
 setup.py
 defgui/__init__.py
-defgui/defgui.py
+defgui/streamlit.py
+defgui/tkinter.py
 defgui.egg-info/PKG-INFO
 defgui.egg-info/SOURCES.txt
 defgui.egg-info/dependency_links.txt

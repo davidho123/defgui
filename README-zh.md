@@ -1,28 +1,12 @@
-Metadata-Version: 2.1
-Name: defgui
-Version: 0.2
-Summary: Decorator for Fast Generation of Function Input Output Components
-Home-page: https://github.com/davidho123/defgui
-Author: davidho
-Author-email: 
-License: MIT
-Keywords: python,gui,defgui,function,tkinter,streamlit
-Classifier: Development Status :: 1 - Planning
-Classifier: Intended Audience :: Developers
-Classifier: Programming Language :: Python :: 3
-Description-Content-Type: text/markdown
-License-File: LICENSE
-
-
 ![logo](logo.png)
 
 本模块是一个函数装饰器，根据函数的参数和返回值，自动生成相应的gui组件
 
 ## 目录
-* [概述](README-zh.md##概述)
-* [功能](README-zh.md##功能)
-* [使用方法](README-zh.md##使用方法)
-* [版本说明](README-zh.md##版本说明)
+* [概述](README-zh.md##一、概述)
+* [功能](README-zh.md##二、功能)
+* [使用方法](README-zh.md##三、使用方法)
+* [版本说明](README-zh.md##四、版本说明)
 
 ## 一、概述
 本模块灵感来源于[magicgui](https://github.com/pyapp-kit/magicgui)，感谢作者
@@ -67,11 +51,11 @@ pip install defgui
 - 点击自动生成的run按钮，显示输出结果
 
 ```python
-from defgui import defgui
+from defgui import defgui_tkinter
 from typing import List
 
 # 定义函数
-@defgui
+@defgui_tkinter
 def example_function(a: int, b: float,c: str,d: List[str])-> tuple:
 	"""Example function that returns a tuple of four values."""
 	return a + 1, b + 1,"str：%s"%(c),d
@@ -98,6 +82,7 @@ example_function()
 
 （1）参数赋值运行、组件水平排列、显示执行按钮
 ```python
+from defgui import defgui_streamlit
 import streamlit as st
 import datetime
 
@@ -117,6 +102,7 @@ st.write(input_values[1])
 
 （2）参数不赋值，组件竖向排列，不显示执行按钮
 ```python
+from defgui import defgui_streamlit
 import streamlit as st
 import datetime
 st.set_page_config(layout="wide")

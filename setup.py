@@ -1,13 +1,12 @@
 from setuptools import setup, find_packages
 
 
-with open( "README.md", encoding="utf-8") as fh:
+with open( "README-zh.md", encoding="utf-8") as fh:
     long_description = "\n" + fh.read()
 
-# you need to change all these
-VERSION = '0.1'
-DESCRIPTION = 'Decorator for Fast Generation of Function Input Output Components'
-LONG_DESCRIPTION = 'A function decorator that generates corresponding input and output components with Tkinter based on the number of arguments and return values of the function.'
+VERSION = '0.2'
+DESCRIPTION = 'Decorator for Fast Generation of Function Input Output Components with Tkinter or Streamlit'
+LONG_DESCRIPTION = 'A function decorator that generates corresponding input and output components with Tkinter or Streamlit based on the number of arguments and return values of the function.'
 
 setup(
     name="defgui",
@@ -21,7 +20,7 @@ setup(
     long_description=long_description,
     packages=find_packages(),
     install_requires=[],
-    keywords=['python', 'gui', 'defgui','function','tkinter'],
+    keywords=['python', 'gui', 'defgui','function','tkinter','streamlit'],
     classifiers=[
         "Development Status :: 1 - Planning",
         "Intended Audience :: Developers",

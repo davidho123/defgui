@@ -7,7 +7,7 @@ import ctypes
 ctypes.windll.shcore.SetProcessDpiAwareness(1)
 
 
-def defgui(func: Callable) -> Callable:
+def defgui_tkinter(func: Callable) -> Callable:
     """装饰器，用于创建GUI界面"""
     def wrapper(*args, **kwargs):
         # 创建主窗口
@@ -133,7 +133,7 @@ def execute_func(func: Callable, input_vars: Dict[str, tk.Variable], root: tk.Tk
 
 if __name__ == "__main__":
 	#测试
-    @defgui
+    @defgui_tkinter
     def example_function(a: int, b: float,c: str,d: List[str])-> tuple:
         """Example function that returns a tuple of two numbers."""
         return a + 1, b + 1,"str:%s"%(c),d
