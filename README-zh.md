@@ -74,9 +74,9 @@ example_function()
 - datetime.date参数，没有赋值时，生成的日期组件，默认使用当天日期
 - 定义函数时，参数可以是位置参数，也可以是关键字参数，但必须有类型标识，否则报错
 - 本分支装饰器，有3个默认参数：horizontal=True, col_size=None, execute=True
-- horizontal=True：输入组件默认以水平排列
-- col_size=None：列尺寸默认不设置，按输入组件数量，平均划分列宽
-- execute=True：默认显示执行按钮，并进行函数运算。False则不显示。
+- **horizontal=True：**输入组件默认以水平排列
+- **col_size=None：**列尺寸默认不设置，按输入组件数量，平均划分列宽
+- **execute=True：**默认显示执行按钮，并进行函数运算。False则不显示。
 - 被装饰函数执行时，默认返回输入组件值和结果值。输入组件值类型是列表，列表项顺序与函数的参数顺序一致。
 - 被装饰函数可以赋值执行，也可以不赋值运行
 
