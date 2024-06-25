@@ -3,10 +3,10 @@
 本模块是一个函数装饰器，根据函数的参数和返回值，自动生成相应的gui组件
 
 ## 目录
-* [概述](README-zh.md##一、概述)
-* [功能](README-zh.md##二、功能)
-* [使用方法](README-zh.md##三、使用方法)
-* [版本说明](README-zh.md##四、版本说明)
+* [概述](README-zh.md#一、概述)
+* [功能](README-zh.md#二、功能)
+* [使用方法](README-zh.md#三、使用方法)
+* [版本说明](README-zh.md#四、版本说明)
 
 ## 一、概述
 本模块灵感来源于[magicgui](https://github.com/pyapp-kit/magicgui)，感谢作者
@@ -37,9 +37,21 @@ streamlit分支
 > 	- 返回每个组件的输入值，和函数运行结果值，用于后续单独使用。
 
 ## 三、使用方法
+常规安装
 ```python
 pip install defgui
+pip install streamlit
 ```
+
+>如果不需要使用streamlit，则安装 v 0.1版本
+>```python
+>pip install defgui==0.1
+>```
+>导入模块时：
+>```python
+>from defgui import defgui
+>```
+
 
 直接在函数上加上装饰器就可以使用
 
