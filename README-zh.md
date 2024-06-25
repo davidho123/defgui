@@ -37,9 +37,21 @@ streamlit分支
 > 	- 返回每个组件的输入值，和函数运行结果值，用于后续单独使用。
 
 ## 三、使用方法
+常规安装
 ```python
 pip install defgui
+pip install streamlit
 ```
+
+>如果不需要使用streamlit，则安装 v 0.1版本
+>```python
+>pip install defgui==0.1
+>```
+>导入模块时：
+>```python
+>from defgui import defgui
+>```
+
 
 直接在函数上加上装饰器就可以使用
 

@@ -35,9 +35,21 @@ Basic function: Use a decorator to automatically generate corresponding GUI comp
 * Returns the input values of each component and the function execution result values for subsequent separate use.
 
 ## Usage
+General Installation
 ```python
 pip install defgui
+pip install streamlit
 ```
+
+>If Streamlit is not required, install version v0.1.
+>```python
+>pip install defgui==0.1
+>```
+>When importing modules：
+>```python
+>from defgui import defgui
+>```
+
 You can use it directly by adding a decorator to the function.
 ### Note: When defining the function, the parameters need to have type annotations, otherwise an error will be reported.
 
