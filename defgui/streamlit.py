@@ -1,9 +1,21 @@
+"""
+name: defgui
+version: 0.2.1
+author: davidho
+url: https://github.com/davidho123/defgui
+date: 2025-1-7
+license: MIT
+description: streamlit分支版本修改：函数的参数返回值，由列表改为字典形式
+
+"""
+
+
 import streamlit as st
 from inspect import signature , _empty as inspect_empty
 import datetime
 
+
 def input_component(param, func_name, default=None):
-    
     key = f"{func_name}_{param.name}"
     if param.annotation == int:
         if default is None:
@@ -33,12 +45,12 @@ def input_component(param, func_name, default=None):
     else:
         return st.write(f"Unsupported type: {param.annotation}")
 
-def defgui_streamlit(horizontal=True, col_size=None, execute=True):
+def defgui_streamlit(horizontal=False, col_size=None, execute=False):
     def decorator(func):
         def wrapper(*args, **kwargs):
             # st.write(f"### Function: {func.__name__}")
             params = signature(func).parameters
-            input_values = []
+            input_values = {}
             if horizontal:
                 cols = st.columns(col_size or len(params))
                 col_iter = iter(cols)
@@ -60,12 +72,12 @@ def defgui_streamlit(horizontal=True, col_size=None, execute=True):
                 
                 if horizontal:
                     with next(col_iter):
-                        input_values.append(input_component(param, func.__name__, default=value))
+                        input_values[param_name] = input_component(param, func.__name__, default=value)
                 else:
-                    input_values.append(input_component(param, func.__name__, default=value))
+                    input_values[param_name] = input_component(param, func.__name__, default=value)
             if execute:
-                if st.button("Execute", key=f"{func.__name__}_button"):
-                    results = func(*input_values)
+                if st.button("提交", key=f"{func.__name__}_button"):
+                    results = func(*input_values.values())
                     st.write(results)
                 else:
                     results = None
@@ -77,28 +89,27 @@ def defgui_streamlit(horizontal=True, col_size=None, execute=True):
 
 
 
-if __name__ == "__main__":   
-    # st.set_page_config(layout="wide")
-    # st.title("Streamlit Decorator App")
-
-    # @defgui_streamlit(horizontal=True, col_size=[1, 1, 1, 2, 2], execute=True)
-    # def greet(date: datetime.date, name: str, age: int=20 , food: list=[]) -> str:
-    #     return f"{date}, Hello, {name}! You are {age} years old, you like {food}"
-    
-    # input_values, results = greet(name="david",food=["apple", "banana"])
-
-    # st.write(input_values[1])
-
+if __name__ == "__main__":
     st.set_page_config(layout="wide")
     st.title("Streamlit Decorator App")
 
-    @defgui_streamlit(horizontal=False, col_size=None, execute=False)
-    def greet(date: datetime.date, name: str, age: int , food: list) -> str:
-        return f"{date}, Hello, {name}! You are {age} years old, you like {food}"
+    @defgui_streamlit(horizontal=True, col_size=[1, 1, 1, 2, 2],execute=True)
+    def greet(date: datetime.date, name: str, age: int=20 , food: list=[]) -> str:
+        return  f"{date}, Hello, {name}! You are {age} years old, you like {food}"
     
-    cols = st.columns(3)
-    with cols[0]:
-        greet()
+    greet_params, results = greet(name="david",food=["apple", "banana"])
 
+    st.write(greet_params["name"])
     
+    # st.set_page_config(layout="wide")
+    # st.title("Streamlit Decorator App")
+
+    # @defgui_streamlit(horizontal=False, col_size=None, execute=False)
+    # def greet(date: datetime.date, name: str, age: int , food: list) -> str:
+    #     return f"{date}, Hello, {name}! You are {age} years old, you like {food}"
+    
+    # cols = st.columns(3)
+    # with cols[0]:
+    #     greet()
+
     

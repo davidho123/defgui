@@ -35,7 +35,8 @@ Basic function: Use a decorator to automatically generate corresponding GUI comp
 * Returns the input values of each component and the function execution result values for subsequent separate use.
 
 ## Usage
-General Installation
+Standard installation, including the tkinter and streamlit modules.
+
 ```python
 pip install defgui
 pip install streamlit
@@ -45,10 +46,7 @@ pip install streamlit
 >```python
 >pip install defgui==0.1
 >```
->When importing modules：
->```python
->from defgui import defgui
->```
+
 
 You can use it directly by adding a decorator to the function.
 ### Note: When defining the function, the parameters need to have type annotations, otherwise an error will be reported.
@@ -83,6 +81,35 @@ Running results
 - When the decorated function is executed, it defaults to returning the input values of the input components and the result values. The input values are of list type, and the order of list items is consistent with the order of function parameters.
 - The decorated function can be executed with or without values assigned.
 
+Version 0.2.1 Update Description:
+
+- The input value of the parameter is returned in the form of a dictionary, with the key name being the parameter name and the key value being the input value.
+
+
+```python
+from defgui import defgui_streamlit
+import streamlit as st
+import datetime
+
+st.set_page_config(layout="wide")
+st.title("Streamlit Decorator App")
+
+@defgui_streamlit(horizontal=True, col_size=[1, 1, 1, 2, 2],execute=True)
+def greet(date: datetime.date, name: str, age: int=20 , food: list=[]) -> str:
+	
+	# When a function is used solely as an input component, you can simply use `return`.
+
+	return  f"{date}, Hello, {name}! You are {age} years old, you like {food}"
+
+greet_params, results = greet(name="david",food=["apple", "banana"])
+
+st.write(greet_params["name"])  #Retrieve the input value using the parameter name.
+
+
+```
+
+Below is the description for version 0.2.
+
 #### (1) Executing with parameter assignment, components placed horizontally, and the execute button displayed
 ```python
 from defgui import defgui_streamlit
@@ -115,6 +142,10 @@ with cols[0]:
 ![png](defgui_streamlit_c.png)
 
 ## Version Notes
+v 0.2.1
+The input value of the function parameter is returned in the form of a dictionary instead of a list.
+
+
 v 0.2
 Added a decorator based on streamlit
 

@@ -37,7 +37,8 @@ streamlit分支
 > 	- 返回每个组件的输入值，和函数运行结果值，用于后续单独使用。
 
 ## 三、使用方法
-常规安装
+
+常规安装，包含tkinter和streamlit模块
 ```python
 pip install defgui
 pip install streamlit
@@ -46,10 +47,6 @@ pip install streamlit
 >如果不需要使用streamlit，则安装 v 0.1版本
 >```python
 >pip install defgui==0.1
->```
->导入模块时：
->```python
->from defgui import defgui
 >```
 
 
@@ -92,6 +89,31 @@ example_function()
 - 被装饰函数执行时，默认返回输入组件值和结果值。输入组件值类型是列表，列表项顺序与函数的参数顺序一致。
 - 被装饰函数可以赋值执行，也可以不赋值运行
 
+0.2.1版本更新说明：
+- 参数输入值返回，由列表改为字典形式，键名为参数名，键值为输入值。
+
+```python
+from defgui import defgui_streamlit
+import streamlit as st
+import datetime
+
+st.set_page_config(layout="wide")
+st.title("Streamlit Decorator App")
+
+@defgui_streamlit(horizontal=True, col_size=[1, 1, 1, 2, 2],execute=True)
+def greet(date: datetime.date, name: str, age: int=20 , food: list=[]) -> str:
+	
+	# 函数只作为输入组件使用时，直接return即可 
+	return  f"{date}, Hello, {name}! You are {age} years old, you like {food}"
+
+greet_params, results = greet(name="david",food=["apple", "banana"])
+
+st.write(greet_params["name"])  #使用参数名称获取输入值
+
+```
+
+下面是0.2版本的说明
+
 （1）参数赋值运行、组件水平排列、显示执行按钮
 ```python
 from defgui import defgui_streamlit
@@ -132,6 +154,8 @@ with cols[0]:
 ![png](defgui_streamlit_c.png)
 
 ## 四、版本说明
+v 0.2.1
+函数参数的输入值返回，由列表改为字典形式
 
 v 0.2
 增加基于streamlit的装饰器
